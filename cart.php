@@ -54,13 +54,13 @@ function content()
 			echo"
 		<tr >
 		  <td rowspan='2'><input type='checkbox' name='remove[]' value='$p_id'> </td>
-		  <td >$pro_title</td>
+		  <td ><a href='details.php?pro_id=$p_id'>$pro_title</a></td>
 		   <td style='width:2;height:2'><SPACER TYPE='block' HEIGHT='1' WIDTH='1'> $qty <a href='quantity.inc.php?u_id=$p_id &m=1'><button type='button' name='add' style='width:2;height:2' onclick='qty_increment($u_ip,$p_id)'><p > + </p></button></a>
 		 </td>
 		  <td rowspan='2'>$price_ct</td> 		
 		</tr>
 		<tr >
-		 <td><img src='admin_area/products/$pro_image'  hight='80'width='80'></a></td>
+		 <td><a href='details.php?pro_id=$p_id'><img src='admin_area/products/$pro_image'  hight='80'width='80'></a></td>
 		 <td style='width:2;height:2'><SPACER TYPE='block' HEIGHT='1' WIDTH='1'>&nbsp; <a href='quantity.inc.php?u_id=$p_id&m=2'><button type='button' name'remove' style='width:2;height:2'><p>-</p></button></a></td>
 		 ";
 		
