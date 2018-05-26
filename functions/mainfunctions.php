@@ -79,7 +79,7 @@ if(isset ($_GET['cat']))
 			  }
 			echo"</tr>
 			  </table>";
-}}
+}
 if(isset ($_GET['brand']))
 {$brand=$_GET['brand'];
 	echo"<table>";
@@ -153,7 +153,8 @@ if(isset($_GET['Search']))
 				 }
 			  }
 			echo" </tr>
-</table>";}
+</table>";
+}}
 
 
 
