@@ -27,15 +27,24 @@ $con_db=mysqli_connect("localhost","root","","e_comm");
 				 $x+=1;
 				
 				 
-			  echo"<th><h3>$pro_title</h3><img style='width:180px;height:150px;border:1px solid #e6e7ea; box-shadow:0px 1px 2px #888888;' src='admin_area/products/$pro_image' />
-			      <br /><br />
-				  <p><h4>Price: $pro_price</h4></P>
-				  <h4>
-				  <a href='details.php?pro_id=$pro_id' >Details</a>
-				   <a href='index.php?add_cart=$pro_id'><button >Add to Cart</a>
-				   </h4>
-			  </th>";
-			   if($x%3==0)
+			  echo"<th>
+					  <div class='item' style='margin: 0px auto;'>
+					      <img style='width:100%;height:200px; margin: 0px auto;' src='admin_area/products/$pro_image' /><br>
+					      <br><h4>$pro_title</h4>
+					      <div class='row' style='margin-top:-12px;'>
+					      	<div class='col-md-2'>
+					      		<h4><b>₹$pro_price</b></h4>
+					      	</div>
+					      	<div class='col-md-10' style='margin-top:8px; padding-left:25px;'>
+					      		<a href='details.php?pro_id=$pro_id' style='text-decoration:none; font-size:12px; color: green;'>View Details</a>
+					      	</div>
+					      </div><br>
+					   
+					      		 <a type='button' class='btn btn-success' href='index.php?add_cart=$pro_id' style='width:100%;'>Add to Cart</a>
+					      	
+					  </div>
+				  </th>";
+			   if($x%4==0)
 				 { 
 					 echo"</tr><tr>";
 				 }
@@ -64,15 +73,24 @@ if(isset ($_GET['cat']))
 				 $x+=1;
 				
 				 
-			  echo"<th><h3>$pro_title</h3><img style='width:180px;height:150px;border:1px solid #e6e7ea; box-shadow:0px 1px 2px #888888;' src='admin_area/products/$pro_image' />
-			      <br /><br />
-				  <p><h4>Price: $pro_price</h4></P>
-				  <h4>
-				  <a href='details.php?pro_id=$pro_id' >Details</a>
-				   <a href='index.php?add_cart=$pro_id'><button >Add to Cart</a>
-				   </h4>
-			  </th>";
-			   if($x%3==0)
+			  echo"<th>
+					  <div class='item' style='margin: 0px auto;'>
+					      <img style='width:100%;height:200px; margin: 0px auto;' src='admin_area/products/$pro_image' /><br>
+					      <br><h4>$pro_title</h4>
+					      <div class='row' style='margin-top:-12px;'>
+					      	<div class='col-md-2'>
+					      		<h4><b>₹$pro_price</b></h4>
+					      	</div>
+					      	<div class='col-md-10' style='margin-top:8px; padding-left:25px;'>
+					      		<a href='details.php?pro_id=$pro_id' style='text-decoration:none; font-size:12px; color: green;'>View Details</a>
+					      	</div>
+					      </div><br>
+					   
+					      		 <a type='button' class='btn btn-success' href='index.php?add_cart=$pro_id' style='width:100%;'>Add to Cart</a>
+					      	
+					  </div>
+				  </th>";
+			   if($x%4==0)
 				 { 
 					 echo"</tr><tr>";
 				 }
@@ -101,15 +119,24 @@ if(isset ($_GET['brand']))
 				 $x+=1;
 				
 				 
-			  echo"<th><h3>$pro_title</h3><img style='width:180px;height:150px;border:1px solid #e6e7ea; box-shadow:0px 1px 2px #888888;' src='admin_area/products/$pro_image' />
-			      <br /><br />
-				  <p><h4>Price: $pro_price</h4></P>
-				  <h4>
-				  <a href='details.php?pro_id=$pro_id' >Details</a>
-				   <a href='index.php?add_cart=$pro_id'><button >Add to Cart</a>
-				   </h4>
-			  </th>";
-			   if($x%3==0)
+			  echo"<th>
+					  <div class='item' style='margin: 0px auto;'>
+					      <img style='width:100%;height:200px; margin: 0px auto;' src='admin_area/products/$pro_image' /><br>
+					      <br><h4>$pro_title</h4>
+					      <div class='row' style='margin-top:-12px;'>
+					      	<div class='col-md-2'>
+					      		<h4><b>₹$pro_price</b></h4>
+					      	</div>
+					      	<div class='col-md-10' style='margin-top:8px; padding-left:25px;'>
+					      		<a href='details.php?pro_id=$pro_id' style='text-decoration:none; font-size:12px; color: green;'>View Details</a>
+					      	</div>
+					      </div><br>
+					   
+					      		 <a type='button' class='btn btn-success' href='index.php?add_cart=$pro_id' style='width:100%;'>Add to Cart</a>
+					      	
+					  </div>
+				  </th>";
+			   if($x%4==0)
 				 { 
 					 echo"</tr><tr>";
 				 }
@@ -163,7 +190,7 @@ function get_cat()
                     while($row_cat=mysqli_fetch_array($run_cat)){
                         $cat_id=$row_cat['cat_id'];
                         $cat_title=$row_cat["cat_title"];
-                        echo"<li><a href='index.php?cat=$cat_id'>$cat_title</a></li>";
+                        echo"<li><h5><a href='index.php?cat=$cat_id'>$cat_title</a></h5></li>";
                     }
 }
 
@@ -175,7 +202,7 @@ $get_brand="select * from brands";
                     while($row_brand=mysqli_fetch_array($run_brand)){
                         $brand_id=$row_brand['brand_id'];
                         $brand_title=$row_brand["brand_title"];
-                        echo"<li><a href='index.php?brand=$brand_id'>$brand_title</a></li>";
+                        echo"<li><h5><a href='index.php?brand=$brand_id'>$brand_title</a></h5></li>";
                     }
 
 }

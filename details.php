@@ -33,9 +33,9 @@ include("basiclayout.php");
 				
 				 
 			  echo"<th><h2>$pro_title</h2><br />
-			       <img style='width:180px;height:150px;border:1px solid #e6e7ea; box-shadow:0px 1px 2px #888888;' src='admin_area/products/$pro_image1' />";
-				   if(isset($pro_image2)){echo"<img style='width:180px;height:150px;border:1px solid #e6e7ea; box-shadow:0px 1px 2px #888888;' src='admin_area/products/$pro_image2' />";}
-				   if(isset($pro_image2)){echo"<img style='width:180px;height:150px;border:1px solid #e6e7ea; box-shadow:0px 1px 2px #888888;' src='admin_area/products/$pro_image3' />";}
+			       <img style='width:180px;height:150px;border:1px solid #e6e7ea;' src='admin_area/products/$pro_image1' />";
+				   if(isset($pro_image2)){echo"<img style='width:180px;height:150px;border:1px solid #e6e7ea;' src='admin_area/products/$pro_image2' />";}
+				   if(isset($pro_image2)){echo"<img style='width:180px;height:150px;border:1px solid #e6e7ea;' src='admin_area/products/$pro_image3' />";}
 			       echo"<br /><br />
 				   <p><h3>Price: ₹ $pro_price</h3></P>
 				   <p><h3>Category: "; get_cat_title($pro_cat);echo"</h3></P>

@@ -21,17 +21,22 @@ background-color: #cccccc;}
 	</style>
 </head>
 <body>
+
+	<div class="container">
 	<form method="POST" action="product_insert.php" enctype="multipart/form-data" >
 	   <table width="700"  style="align:center">
 	     <tr>
 	     	<td colspan="2" align="center">
-	     		<h2>Insert New Product</h2>
+	     		<h3>Insert New Product</h3>
 	     	</td>
 	     </tr>
 	     <tr>
 		     <td align="right"></td>
 	     	<td>
-	     		<input type="text" name="product_title" placeholder="Product Title">
+	     		  <div class="form-group">
+				    <label for="product_title">Product Title</label>
+				    <input type="text"class="form-control" id="product_title" name="product_title" placeholder="Enter Product Title">
+				  </div>
 	     	</td>
 	     </tr>
 		 <tr>
@@ -103,6 +108,7 @@ background-color: #cccccc;}
 	   </table>
 	
 	</form>
+	</div>
 </body>
 </html>
 <?php

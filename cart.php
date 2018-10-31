@@ -5,8 +5,10 @@
 	<meta charset="UTF-8">
 	<title>Shopping Cart</title>
 	<style>	
-tr:nth-child(even) {
-background-color: #cccccc;}
+		td{
+			height: 80px;
+			vertical-align:middle;
+		}
 	</style>
 
 	
@@ -27,14 +29,13 @@ $u_ip=get_ip();
 	?>
    <div id="product_view">
    <form action='cart.php' method='post' enctype='multipart/form-data'>
-	   <table   cellpadding="10px" border='2px' >
-	     <tr >
-		  <td>Remove</td>
-		  <td>Product</td>
+	   <table  class="table table-striped" cellpadding="10px">
+	     <tr>
+	      <td></td>
+	      <td>Product</td>
 		  <td>Quantity</td>
-		  <td>Unit Price</td>
-		  <td>Total price</td>
-		  
+		  <td>Price</td>
+		  <td>Remove</td>
 		 </tr>
 		 <?php
 		 	$price=0;
@@ -53,35 +54,62 @@ $u_ip=get_ip();
 		$price+=$price_ct;//total bill
 			echo"
 		<tr >
-		  <td rowspan='2'><input type='checkbox' name='remove[]' value='$p_id'> </td>
-		  <td ><a href='details.php?pro_id=$p_id'>$pro_title</a></td>
-		   <td style='width:2;height:2'><SPACER TYPE='block' HEIGHT='1' WIDTH='1'> $qty <a href='functions/quantity.inc.php?u_id=$p_id &m=1'><button type='button' name='add' style='width:2;height:2' onclick='qty_increment($u_ip,$p_id)'><p > + </p></button></a>
-		 </td>
-         <td rowspan='2'>$price_c</td>
-		  <td rowspan='2'>$price_ct</td> 		
+			<td><a href='details.php?pro_id=$p_id'><img src='admin_area/products/$pro_image'  hight='80'width='80'></a></td>
+		    <td ><a href='details.php?pro_id=$p_id' style='color:black; text-decoration:none;'>$pro_title</a></td>
+		    <td style='width:2;height:2'><SPACER TYPE='block' HEIGHT='1' WIDTH='1'><a href='functions/quantity.inc.php?u_id=$p_id&m=2'><button type='button' class='btn btn-default' name'remove' style='width:2;height:2'>-</button></a> $qty <a href='functions/quantity.inc.php?u_id=$p_id &m=1'><button type='button' class='btn btn-default' name='add' style='width:2;height:2' onclick='qty_increment($u_ip,$p_id)'> + </button></a>
+		    </td>
+		    <td >$price_ct</td> 
+		  <td><input type='checkbox' name='remove[]' value='$p_id'> </td>		
 		</tr>
 		<tr >
-		 <td><a href='details.php?pro_id=$p_id'><img src='admin_area/products/$pro_image'  hight='80'width='80'></a></td>
-		 <td style='width:2;height:2'><SPACER TYPE='block' HEIGHT='1' WIDTH='1'>&nbsp; <a href='functions/quantity.inc.php?u_id=$p_id&m=2'><button type='button' name'remove' style='width:2;height:2'><p>-</p></button></a></td>
+		 
+		 
 		 ";
 		
 		
-	}	echo" </tr>
+	}	echo" 
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
 		 <tr><td></td>
 		 <td></td>
+
 		  <td align='center'>Sub Total</td>
-          <td></td>
-		  <td>$price</td>
+      		  <td>$price</td>
+      		  <td></td>
 		 </tr>
 		 
 		 <tr>
-		 <td></td>
-		  <td><br /><input type='submit' name='update' value='Update Cart'></td>
-		  <td><br /><input type='submit' name='continue' value='Continue Shopping'></td>
-		  <td><br /><button><a href='checkout.php' style='text-decoration:none'>Checkout</a></button></td>
-		 </tr>
-	  </table>
-  </form>";
+		 <td></td>";
+		 if($price>0){
+		 echo"
+		  <td><br /><input type='submit' name='update' value='Update Cart' class='btn btn-default'></td>";
+		}
+		else{
+			echo"<td></td>";
+		}
+		  echo"
+		  <td><br /><input type='submit' name='continue' value='Continue Shopping' class='btn btn-default'></td>";
+
+		  if($price>0){
+		  	echo"
+		  <td><br /><a type='button' href='checkout.php' style='text-decoration:none' class='btn btn-info'>Checkout</a></td>
+		  <td></td>";
+		  }
+		  else{
+		  	echo"
+			  <td></td>
+			  <td></td>
+			 </tr>
+		  </table>
+	  </form>";
+		  }
+
 
 
  
@@ -113,6 +141,7 @@ $u_ip=get_ip();
             echo'<script> window.open("index.php","_self")</script>';
         }
 
+echo'</div>';
 include('footer.php');           
 ?>        
        

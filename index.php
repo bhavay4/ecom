@@ -12,7 +12,8 @@ include("basiclayout.php");
 			  <?php
 			   get_pro();
 			  ?>
-			 </div>
+			  
+			</div>
 			 <?php
 			 $e=get_ip();
 			 
