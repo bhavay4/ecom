@@ -156,8 +156,6 @@ if(isset($_GET['Search']))
 </table>";
 }}
 
-
-
 function get_cat()
 {global $con;
 	$get_cat="select * from categories";
@@ -168,7 +166,6 @@ function get_cat()
                         echo"<li><a href='index.php?cat=$cat_id'>$cat_title</a></li>";
                     }
 }
-
 
 function get_brands()
 {
@@ -194,7 +191,6 @@ function get_cat_title($x)
                     }}
 }
 
-
 function get_brand_title($z)
 {global $con;
 	$get_brand_title="select * from brands";
@@ -206,7 +202,7 @@ function get_brand_title($z)
                     }}
 }
 
-function get_ip()
+function get_ip()#returns ip add of user
 {global $con;
 	if (!empty($_SERVER["HTTP_CLIENT_IP"]))
 {
@@ -225,40 +221,81 @@ else
 return $ip;
 }
 
+function u_cart_list()#returns list with all values in cart
+{
+    @session_start();
+    global $con;
+    if(isset($_SESSION['u_id']))
+    {
+        $u_uid=$_SESSION['u_uid'];
+        $cart_q="select * from u_cart where u_uid='$u_uid'";
+        $cart_r=mysqli_query($con,$cart_q);
+        return $cart_r;
+    }
+    else
+    {
+        $u_ip=get_ip();
+        $cart_q="select * from cart where ip_add='$u_ip'";
+        $cart_r=mysqli_query($con,$cart_q);
+        return $cart_r;
+    }
+}
 
+function get_product_qty($up_id)#returns qty of particular product from cart
+{
+    @session_start();
+    global $con;
+    $ip=get_ip();
+    if(isset($_SESSION['u_id']))
+        {  
+    
 
-function cart($u_ip)
-{  
+        $u_id=$_SESSION['u_id'];
+        $q="select qty from u_cart where u_id='$u_id' and p_id='$up_id'";
+        $r=mysqli_query($con,$q);
+        return $r;
+ }
+    if(!isset($_SESSION['u_id'])){
+        $q="select qty from cart where ip_add='$ip' and p_id='$up_id'";
+        $r=mysqli_query($con,$q);
+        return $r;
+}
+}
+
+function cart($p_id)#add product to cart 
+{
+    $ip=get_ip();
   global $con;
   if(isset($_GET['add_cart']))
   {
-		
-		$up_id=$_GET['add_cart'];
-	
-	$check_q="select * from cart where ip_add='$u_ip' and p_id='$up_id'";
-	$check_r=mysqli_query($con,$check_q);
-	$check_t=mysqli_num_rows($check_r);
+      $p_id=$_GET['add_cart'];
+      $check_r=get_product_qty($p_id);
+      $check_t=mysqli_num_rows($check_r);	
 	if($check_t>0)
 	{
-		qty_increment($u_ip,$up_id);
+		qty_increment($p_id);
 	}
    else
     {
-	$insert_q="insert into cart(p_id,ip_add,qty)values('$up_id','$u_ip',1) ";
-	$insert_r=mysqli_query($con,$insert_q);
+       @session_start();
+       if(isset($_SESSION['u_uid'])){
+	       $insert_q="insert into u_cart values('$p_id','$ip',1,'".$_SESSION['u_id']."','".$_SESSION['u_uid']."') ";
+        }
+       else{
+           $insert_q="insert into cart(p_id,ip_add,qty)values('$p_id','$ip',1) ";
+       }
+    $insert_r=mysqli_query($con,$insert_q);
 	echo "<script>window.open('index.php','_self')</script>";
 
 	}
   }
 }
 
-function items()
+function items()#return count of number of product in cart
 {
 	global $con;
 	$items=0;
-	$u_ip=get_ip();
-	$count_q="select * from cart where ip_add='$u_ip'";
-	$count_r=mysqli_query($con,$count_q);
+	$count_r=u_cart_list();
 	while($count=mysqli_fetch_array($count_r))
 	{
 		$item_c=$count['qty'];
@@ -266,13 +303,14 @@ function items()
 	}
    return $items;
 }
-function t_price()
+
+
+function t_price()#returns total price of products in cart 
 {
 	global $con;
 	$price=0;
 	$u_ip=get_ip();
-	$price_q="select * from cart where ip_add='$u_ip'";
-	$price_r=mysqli_query($con,$price_q);
+	$price_r= u_cart_list();
 	while($row=mysqli_fetch_array($price_r))
 	{
 		$p_id=$row['p_id'];
@@ -287,22 +325,104 @@ function t_price()
 	}
    return $price;
 }
-function qty_increment($up_id)
+
+function pro_id_arr()#array of product id in cart
+{
+	global $con;
+	$items=0;
+	$count_r=u_cart_list();
+	while($count=mysqli_fetch_array($count_r))
+	{
+		$item_c=$count['p_id'];
+		$items+=$item_c;
+	}
+   return $items;
+}
+
+function qty_increment($up_id)#increase qty of product by 1 unit
 { 
-    $ip=get_ip();
-  global $con;
-	$update_q="UPDATE cart SET qty = qty+1 where ip_add='$ip' and p_id='$up_id'";
-		mysqli_query($con,$update_q);
+    @session_start();
+    global $con;
+    $ip= get_ip();
+    if(isset($_SESSION['u_id']))
+    {
+        $u_uid=$_SESSION['u_uid'];
+        $update_q="UPDATE u_cart SET qty = qty+1 where u_uid='$u_uid' and p_id='$up_id'"; mysqli_query($con,$update_q);
+    }
+    else
+    {
+	   $update_q="UPDATE cart SET qty = qty+1 where ip_add='$ip' and p_id='$up_id'"; mysqli_query($con,$update_q);
+    }
 	
 }
+
 function qty_decrement($up_id)
 { 
-   $ip=get_ip();
-  global $con;
-	$update_q="UPDATE cart SET qty = qty-1 where ip_add='$ip' and p_id='$up_id' and qty>0";
-		mysqli_query($con,$update_q);
+    @session_start();
+    global $con;
+    $ip= get_ip();
+    if(isset($_SESSION['u_id']))
+    {
+        $u_id=$_SESSION['u_id'];
+        $update_q="UPDATE u_cart SET qty = qty-1 where u_id='$u_id' and p_id='$up_id'"; mysqli_query($con,$update_q);
+    }
+    else
+    {
+	   $update_q="UPDATE cart SET qty = qty-1 where ip_add='$ip' and p_id='$up_id'"; mysqli_query($con,$update_q);
+    }
 	
 }
 
+function gust_info()#to display cart details
+{
+echo'<div id="headline"><b>Welcome Gust! <b><a href="cart.php" style="text-decoration:none"><b style="color:yellow">CART</b></a>';
+			   
+			 echo'<span>-Items:';$items=items();echo $items;echo'-Price:';$price=t_price();echo $price;echo'</span>';
 
+}
+
+function update_cart()#pass cart data to U_cart table after login
+{
+    @session_start();
+    
+    $ip=get_ip();
+    global $con;
+    if(isset($_SESSION['u_id']))
+    {
+        $q1="select * from cart where ip_add='$ip'";
+        $r1=mysqli_query($con,$q1);
+        $check1=mysqli_num_rows($r1);
+        if($check1>0)
+        {
+            while($row=mysqli_fetch_array($r1))
+            {
+                $p_id=$row['p_id'];
+                $u_ip_add=$row['ip_add'];
+                $qty=$row['qty'];
+                $u_id=$_SESSION['u_id'];
+                $u_uid=$_SESSION['u_uid'];
+                $q2="INSERT INTO u_cart VALUES('$p_id','$u_ip_add','$qty','$u_id','$u_uid')";
+                $r2=mysqli_query($con,$q2);
+                $q3="DELETE FROM cart WHERE ip_add='$ip'";
+                $r3=mysqli_query($con,$q3);
+            }
+        }
+    }
+}
+
+function get_order_id($invoice_no)
+{
+     @session_start();
+    global $con;
+    if(isset($_SESSION['u_id']))
+        {  
+    
+    $u_id=$_SESSION['u_id'];
+        $q="select order_id from u_orders where u_id='$u_id' and invoice_no='$invoice_no'";
+        $r=mysqli_query($con,$q);
+        $order_id=mysqli_fetch_array($r);
+        $order_id=$order_id['order_id'];
+        return $order_id;
+}
+}
 ?>
