@@ -9,7 +9,7 @@ $con_db=mysqli_connect("localhost","root","","e_comm");
 	{
 			if (!isset($_GET['brand']))
 		{echo"<table>";
-	 $get_products="select * from products order by rand() LIMIT 0,6";
+	 $get_products="select * from products order by rand() LIMIT 0,8";
 			  $run_product=mysqli_query($con_db,$get_products);
 			  
 			  $x=0;
@@ -148,7 +148,7 @@ if(isset($_GET['Search']))
 {
 	$user_query=$_GET['user_query'];
 	echo"<table>";
-	 $get_products="select * from products where product_keywords like '$user_query'";
+	 $get_products="select * from products where product_keywords like '$user_query%' or product_title like '$user_query%' or product_title like '%$user_query%' or product_title like '%$user_query%'";
 			  $run_product=mysqli_query($con_db,$get_products);
 			  
 			  $x=0;
@@ -182,6 +182,54 @@ if(isset($_GET['Search']))
 			echo" </tr>
 </table>";
 }}
+
+function all_pro()
+{
+    global $con;
+    echo"<table>";
+	 $get_products="select * from products order by rand() ";
+	 $run_product=mysqli_query($con,$get_products);
+			  
+			  $x=0;
+			  
+			  echo"<tr>";	  
+			  while($row_product=mysqli_fetch_array($run_product))
+			  {
+				 $pro_id=$row_product['product_id'];
+				 $pro_title=$row_product['product_title'];
+				 $pro_cat=$row_product['cat_id'];
+				 $pro_brand=$row_product['brand_id'];
+				 $pro_desc=$row_product['product_desc'];
+				 $pro_price=$row_product['product_price'];
+				 $pro_image=$row_product['product_img1'];
+				 $x+=1;
+				
+				 
+			  echo"<th>
+					  <div class='item' style='margin: 0px auto;'>
+					      <img style='width:100%;height:200px; margin: 0px auto;' src='admin_area/products/$pro_image' /><br>
+					      <br><h4>$pro_title</h4>
+					      <div class='row' style='margin-top:-12px;'>
+					      	<div class='col-md-2'>
+					      		<h4><b>₹$pro_price</b></h4>
+					      	</div>
+					      	<div class='col-md-10' style='margin-top:8px; padding-left:25px;'>
+					      		<a href='details.php?pro_id=$pro_id' style='text-decoration:none; font-size:12px; color: green;'>View Details</a>
+					      	</div>
+					      </div><br>
+					   
+					      		 <a type='button' class='btn btn-success' href='index.php?add_cart=$pro_id' style='width:100%;'>Add to Cart</a>
+					      	
+					  </div>
+				  </th>";
+			   if($x%4==0)
+				 { 
+					 echo"</tr><tr>";
+				 }
+			  }
+			echo" </tr>
+			  </table>";
+}
 
 function get_cat()
 {global $con;

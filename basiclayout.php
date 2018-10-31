@@ -24,20 +24,7 @@ include("header.php");
 			 </div>
 			 
 			<div id="right_content">
-			<?php if(isset($_SESSION['u_uid'])){
-    $u_uid=$_SESSION['u_uid'];
-    echo'<div id="headline"><b>Welcome '.$u_uid.' <b>';
-}else{
-    echo'<div id="headline"><b>Welcome Guest! <b>';
-}  ?><a href="cart.php" style="text-decoration:none"><b>CART</b></a>
-			   
-			   <span> -Items:<?php $items=items();echo $items;?> -Price:<?php $price=t_price();echo $price;?></span>
-			   
-			   <?php
-			   $ip=get_ip();
 			  
-			   ?>
-			   </div>
 			
 			
 	

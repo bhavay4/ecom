@@ -1,0 +1,332 @@
+body{
+background:#fff;
+}
+
+.main_wrap
+{
+
+	height:auto;
+	margin:auto;
+	
+}
+#header_col{
+	width:100%;
+	height:106px;
+	background:#cccccc;
+	padding-top:10px;
+}
+#header_wrap{
+width:1200px;
+	height:66px;
+	margin:auto;
+	
+	
+	border: 1px ;
+	
+    padding:0px;
+    box-shadow: 5px 10px 8px #888888;
+}
+.logo_wrap
+{
+	float:left;
+	
+}
+.ad{
+float:right;
+}
+
+#navbar_wrap
+{
+	width: 1600px;
+	margin: auto;
+	min-height:50px;
+	background:#999;
+	color:black;
+	
+	position: sticky;
+	top: 0;
+}
+	
+.content_wrap
+{
+    width:1310px;
+	height:1000px;
+	background:#e6e7ea;
+	margin:auto;
+	margin-top:10px;
+	margin-bottom:10px;
+	
+}	
+#right_content
+{   
+	width:1050px;
+	min-height:1000px;
+	background:#fff;
+	float:right;
+	box-shadow: 0px 5px 8px #888888;
+}	
+#left_sidebar
+{
+	width:250px;
+	min-height:600px;
+	background:#fff;
+	float:left;
+position: sticky;
+	top: 0;
+box-shadow: 0px 5px 8px #888888;
+
+}
+.footer
+{
+	width:100%;
+	height:100px;
+	background:#999;
+	color:#fff;
+	clear:both;
+}
+#menu
+{
+	padding:0px;
+	line-height:36px;
+	margin-top:5px;
+	margin-left:10%;
+	float:left;
+	
+}
+#menu li{
+	list-style:none;
+	display:inline;
+}
+#menu a{
+	color:#fff;
+	text-decoration:none;
+	font-size:18px;
+	margin:5px;
+	padding:10px;
+}
+#menu a:hover
+{
+	color:#FFFF66;
+font-weight:bolder;	
+}
+
+#sidebar_title{
+	padding:20px;
+	font-size:25px;
+	
+}
+#col{
+	
+	font-size:20px;
+	padding-top:1px;
+}
+#col li{
+	list-style:none;
+	padding:5px;
+	padding-left:35px;
+}
+#col a{
+	text-decoration:none;
+	color:#333333;
+} 
+#col a:active{
+	font-weight:bolder;
+	
+	color:#000;
+}
+
+#headline
+{
+background:#cccccc; 
+color:#fff; 
+float:right;
+ width:1050px;
+height:40px; 
+ position:sticky; 
+ top:0;
+
+ text-align:right;
+ font-size:20px;
+ 
+ }
+#product_view
+{
+	color:black;
+	width:1000px;
+	margin-left: 30px;
+	margin-top: 100px;
+	margin-bottom:10px;
+	text-align:center;
+}
+#product_view a{
+	color:black;
+	text-decoration:none;
+	font-size:18px;
+	text-align:center;
+
+	padding:10px;
+}
+#product_view a:hover
+{
+	color:#FFFF66;
+font-weight:bolder;	
+}
+
+/*FOOTER*/
+#footer-sub{
+    background-color: red;
+    border-top: 1px solid #dbdbdb;
+}
+
+#footer-main{
+    background-color: #012b72;
+}
+
+#footer-sub h5{
+    color:#565656;
+    margin-top: 25px;
+}
+
+#footer-sub ul{
+    list-style: none;
+    margin-top: 20px;
+}
+
+#footer-sub hr{
+    margin: 5px;
+
+}
+
+#footer-sub ul li{
+margin-left: -38px;
+}
+
+#footer-sub a:link {
+    text-decoration: none;
+    color:#565656;
+    font-size: 12px;
+}
+
+#footer-sub a:visited {
+    text-decoration: none;
+    color:#565656;
+}
+
+
+#footer-sub a:hover {
+    text-decoration: none;
+    color: blue;
+}
+
+
+#footer-sub a:active {
+    text-decoration: none;
+    color:#565656;
+}
+
+.vertical-line{
+    border-right: 1px solid #dbdbdb;
+    margin: 8px;
+    padding: 0px;
+}
+
+.glyphicon {
+    font-size: 35px;
+     color:#6d6c6c;
+}
+
+#sub-two{
+    margin: 0px;
+    padding: 0px;
+}
+
+#sub-two .vertical-line h4{
+    color:#6d6c6c;
+}
+
+
+#footer-main ul{
+    list-style: none;
+}
+
+#footer-main ul li{
+    float:left;
+    text-decoration: none;
+    padding-left: 15px;
+    margin-top: 17px;
+}
+
+#footer-main a:link {
+    color:white;
+    font-size: 12px;
+}
+
+#footer-main a:visited {
+    color:white;
+}
+
+
+#footer-main a:hover {
+    text-decoration: none;
+    color: #00b9f5;
+}
+
+
+#footer-main a:active {
+    color:white;
+}
+
+.glyphicon-search{
+    font-size: 20px;
+}
+
+#social-menu{
+    float: right;
+   margin-right: 60px;
+}
+
+#side-padding{
+    padding: 0px;
+    margin: 0px;
+}
+/*END FOOTER*/
+
+
+
+
+
+
+
+
+/*NAVBAR*/
+.cus_header{
+    width: 100%;
+    height: 100px;
+    background-color:red;
+}
+
+.search_div{
+    margin-top: 16px;
+}
+
+#search_bar{
+    width:450px;
+    height:35px;
+    border-color: none;
+    border-radius: 4px;
+    border-style: none;
+    padding: 8px;
+    background-image: none;
+    font-size: 12px;
+}
+
+.right_btn_grp{
+    margin-top: 16px;
+}
+
+.nav_list{
+    display: inline;
+    text-decoration:none; 
+    list-style:none;
+}
+/*END NAVBAR*/

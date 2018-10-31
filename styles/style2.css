@@ -1,0 +1,262 @@
+body{
+background:#F1F3F6;
+font-family: 'Roboto', sans-serif;
+}
+
+.main_wrap
+{
+	height:auto;
+	margin:auto;
+	
+}
+
+.content_wrap
+{
+    margin:10px;
+    width:100%;
+	height:1000px;
+	
+}	
+
+#right_content
+{   
+    width:81%;
+    margin-right: 18px;
+	height: 100%;
+	background:#fff;
+	float:right;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}	
+#left_sidebar
+{
+    width: 17%;
+	height: 100%;
+	background:#fff;
+	float:left;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+#left_sidebar ul{
+    padding: none;
+    margin: none;
+    line-height: 2px;
+}
+
+
+
+.col li{
+	list-style:none;
+}
+.col a{
+	text-decoration:none;
+	color:#333333;
+} 
+.col a:active{
+	font-weight:bolder;
+	
+	color:#000;
+}
+
+#headline
+{
+float:right;
+height:40px; 
+ top:0;
+ text-align:right;
+}
+
+#product_view
+{
+
+}
+
+
+/*FOOTER*/
+#footer-sub{
+    background-color: #fff;
+    border-top: 1px solid #dbdbdb;
+}
+
+#footer-main{
+    background-color: #273032;
+}
+
+#footer-sub h5{
+    color:#565656;
+    margin-top: 25px;
+}
+
+#footer-sub ul{
+    list-style: none;
+    margin-top: 20px;
+}
+
+#footer-sub hr{
+    margin: 5px;
+
+}
+
+#footer-sub ul li{
+margin-left: -38px;
+}
+
+#footer-sub a:link {
+    text-decoration: none;
+    color:#565656;
+    font-size: 12px;
+}
+
+#footer-sub a:visited {
+    text-decoration: none;
+    color:#565656;
+}
+
+
+#footer-sub a:hover {
+    text-decoration: none;
+    color: #565656;
+}
+
+#footer-sub a:active {
+    text-decoration: none;
+    color:#565656;
+}
+
+.vertical-line{
+    border-right: 1px solid #dbdbdb;
+    margin: 8px;
+    padding: 0px;
+}
+
+.glyphicon {
+    font-size: 35px;
+     color:#6d6c6c;
+}
+
+#sub-two{
+    margin: 0px;
+    padding: 0px;
+}
+
+#sub-two .vertical-line h4{
+    color:#6d6c6c;
+}
+
+
+#footer-main ul{
+    list-style: none;
+}
+
+#footer-main ul li{
+    float:left;
+    text-decoration: none;
+    padding-left: 15px;
+    margin-top: 17px;
+}
+
+#footer-main a:link {
+    color:white;
+    font-size: 12px;
+}
+
+#footer-main a:visited {
+    color:white;
+}
+
+
+#footer-main a:hover {
+    text-decoration: none;
+}
+
+
+#footer-main a:active {
+    color:white;
+}
+
+.glyphicon-search{
+    font-size: 20px;
+}
+
+#social-menu{
+    float: right;
+   margin-right: 60px;
+}
+
+#side-padding{
+    padding: 0px;
+    margin: 0px;
+}
+/*END FOOTER*/
+
+
+
+
+
+
+
+
+/*NAVBAR*/
+.cus_header{
+    width: 100%;
+    height: 120px;
+    background-color:#9C27B0;
+    position: relative;
+}
+
+.cus_header_sub{
+    background-color: #fff;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    height: 50px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.search_div{
+    margin-top: 16px;
+}
+
+#search_bar{
+    width:450px;
+    height:35px;
+    border-color: none;
+    border-radius: 4px;
+    border-style: none;
+    padding: 8px;
+    background-image: none;
+    font-size: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.right_btn_grp{
+    margin-top: 20px;
+}
+
+.nav_list{
+    list-style:none;
+}
+
+.nav_list li{
+    display: inline;
+}
+
+.nav_list li a{
+    font-family: 'Raleway', sans-serif;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 14px;
+    margin-right: 45px;
+    padding-top:-1px;
+}
+/*END NAVBAR*/
+
+
+/*PAYMENT FORM*/
+.payment_form{
+    background-color: #fff;
+    width: 450px;
+    height: 450px;
+}
+/*END PAYMENT FORM*/
